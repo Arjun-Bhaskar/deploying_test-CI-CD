@@ -12,7 +12,7 @@ app.use(json()); // Updated to use express.json()
 
 // Connect to the database
 connectDB();
-
+console.log("hello")
 // Set up routes
 signupRoute(app);
 
