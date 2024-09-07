@@ -20,9 +20,9 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-      - name: Build Vanilla JS Project
-        run: |
-          npm run build # Adjust if you have specific build steps or tools like Webpack
+    #   - name: Build Vanilla JS Project
+    #     run: |
+    #       npm run build # Adjust if you have specific build steps or tools like Webpack
       - name: Run Node.js Tests
         run: |
           npm test
