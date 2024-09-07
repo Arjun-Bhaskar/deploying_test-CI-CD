@@ -1,14 +1,14 @@
-const User = require('../modal/signup-modal');
+import User from '../modal/signup-modal.js';
 
-exports.createObj = (payload) => {
+export const createObj = (payload) => {
     return new User({
         fullName: payload.fullName, 
         email: payload.email,
         phoneNo: payload.phoneNo,
         password: payload.password
     });
-}
+};
 
-exports.saveData = (obj) => {
+export const saveData = (obj) => {
     return obj.save();
-}
+};

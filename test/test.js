@@ -1,26 +1,26 @@
 import { expect } from 'chai';
 import request from 'request';
 
-// Base URL for your API endpoint
+// Base URL for API endpoint
 const baseUrl = 'http://localhost:3040/create/user';
 
 // Function to handle server error simulation
 const simulateServerError = (callback) => {
-  // Simulate a server error by invoking the callback with an error object
+ 
   callback(new Error('Simulated server error'), { statusCode: 500 }, { message: 'An unexpected error occurred. Please try again later' });
 };
 
 // Function to handle duplicate email error simulation
 const simulateDuplicateError = (callback) => {
-  // Simulate a duplicate key error by invoking the callback with an error object
+  
   callback(new Error('Duplicate key error'), { statusCode: 409 }, { message: 'Email or phone number already exists' });
 };
 
 describe('Signup API', function() {
-  this.timeout(5000); // Increase timeout for slow responses
+  this.timeout(5000);
 
   before((done) => {
-    // Clear the database before running tests (if applicable)
+    // Clear the database before running tests
     done();
   });
 
@@ -147,7 +147,7 @@ describe('Signup API', function() {
     });
   });
 
-  // New Test case: Missing `fullName` field
+  // Missing `fullName` field
   it('should return status 401 for missing `fullName` field', function(done) {
     const missingFullNameData = {
       email: 'missing.fullname@example.com',
@@ -167,7 +167,7 @@ describe('Signup API', function() {
     });
   });
 
-  // New Test case: Invalid password format
+  // Invalid password format
   it('should return status 400 for invalid password format', function(done) {
     const invalidPasswordData = {
       fullName: 'Invalid Password User',
@@ -188,7 +188,7 @@ describe('Signup API', function() {
     });
   });
 
-  // New Test case: Simulate Duplicate Email or Phone Number
+  //Simulate Duplicate Email or Phone Number
   it('should return status 409 for duplicate email or phone number', function(done) {
     // Override request to simulate a duplicate key error
     simulateDuplicateError((error, response, body) => {

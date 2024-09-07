@@ -2,21 +2,25 @@
   "name": "sit725-3.1",
   "version": "1.0.0",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "mocha",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha --require esm"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
-    "http": "^0.0.1-security",
-    "mongoose": "^8.5.3",
+    "mongoose": "^8.5.2",
     "nodemon": "^3.1.4",
-    "socket.io": "^4.7.5"
+    "request": "^2.88.2",
+    "supertest": "^7.0.0"
   },
   "devDependencies": {
+    "chai": "^5.1.1",
+    "chai-http": "^5.0.0",
+    "esm": "^3.2.25",
     "mocha": "^10.7.3"
   }
 }

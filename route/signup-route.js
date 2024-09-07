@@ -1,7 +1,6 @@
-const signup = require('../controller/signup-controller');
-const express = require('express')
-const router = express.Router();
-module.exports = (app)=>{
-    router.post('/create/user',signup);
-    app.use(router);
-}
+import signupController from '../controller/signup-controller.js'; // Update the relative path
+
+
+export default (app) => {
+    app.post('/create/user', signupController);
+};
