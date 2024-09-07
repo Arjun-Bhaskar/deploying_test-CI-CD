@@ -26,9 +26,9 @@ jobs:
       - name: Run Node.js Tests
         run: |
           npm test
-      - name: Build Node.js Project
-        run: |
-          npm run build # If you have a build step for Node.js, otherwise you can omit this
+    #   - name: Build Node.js Project
+    #     run: |
+    #       npm run build # If you have a build step for Node.js, otherwise you can omit this
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
