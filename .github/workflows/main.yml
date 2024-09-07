@@ -33,21 +33,11 @@ jobs:
     #   - name: Build Node.js Project
     #     run: |
     #       npm run build # If you have a build step for Node.js, otherwise you can omit this
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: ./dist # Change this if your build output is in a different directory
 
   deploy:
     needs: build
     runs-on: macos-latest
     steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-artifacts
-          path: ./dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
