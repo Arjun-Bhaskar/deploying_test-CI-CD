@@ -1,0 +1,51 @@
+name: CI/CD for Vanilla JS and Node.js Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install Dependencies
+        run: |
+          npm install
+      - name: Build Vanilla JS Project
+        run: |
+          npm run build # Adjust if you have specific build steps or tools like Webpack
+      - name: Run Node.js Tests
+        run: |
+          npm test
+      - name: Build Node.js Project
+        run: |
+          npm run build # If you have a build step for Node.js, otherwise you can omit this
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./dist # Change this if your build output is in a different directory
+
+  deploy:
+    needs: build
+    runs-on: macos-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./dist
+
+      - name: Deploy to Server or Service
+        run: |
+          # Add your deployment commands here, e.g., SCP or a deployment script
+          echo "Deploying to server..."
