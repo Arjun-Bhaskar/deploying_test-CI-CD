@@ -23,9 +23,13 @@ jobs:
     #   - name: Build Vanilla JS Project
     #     run: |
     #       npm run build # Adjust if you have specific build steps or tools like Webpack
-    #   - name: Run Node.js Tests
-    #     run: |
-    #       npm test
+      - name: Start Server
+        run: |
+            npm start & # Start the server in the background
+            sleep 5     # Wait for the server to start properly
+      - name: Run Node.js Tests
+        run: |
+          npm test
     #   - name: Build Node.js Project
     #     run: |
     #       npm run build # If you have a build step for Node.js, otherwise you can omit this
