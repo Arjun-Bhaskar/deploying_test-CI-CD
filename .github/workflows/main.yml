@@ -45,7 +45,8 @@ jobs:
           name: build-artifacts
           path: ./dist
 
-      - name: Deploy to Server or Service
-        run: |
-          # Add your deployment commands here, e.g., SCP or a deployment script
-          echo "Deploying to server..."
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            github_token: ${{ secrets.MY_TOKEN }} # Ensure this secret is added to your repository
+            publish_dir: ./dist
